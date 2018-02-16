@@ -1,0 +1,65 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "rules": {
+    "arrow-body-style": ["off"],
+    "arrow-parens": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "object-curly-newline": ["error", { "consistent": true }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-else-return": ["off"],
+    "func-names": ["off"],
+    "function-paren-newline": ["error", "consistent"],
+    "import/extensions": ["error", "never"],
+    "import/no-unresolved": ["error", { "ignore": ["testHelper", "hocs/", "reducers/", "sagas/", "util/", "values/"] }],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": ["webpack.config.js", "**/test/**/*.js"]
+    }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+    "react/sort-comp": ["error", {
+      "order": [
+        "static-methods",
+        "type-annotations",
+        "lifecycle",
+        "renderers",
+        "handlers",
+        "everything-else"
+      ],
+      "groups": {
+        "lifecycle": [
+          "displayName",
+          "propTypes",
+          "contextTypes",
+          "childContextTypes",
+          "mixins",
+          "statics",
+          "defaultProps",
+          "constructor",
+          "getDefaultProps",
+          "getInitialState",
+          "state",
+          "getChildContext",
+          "componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "componentDidUpdate",
+          "componentWillUnmount"
+        ],
+        "renderers": [
+          "render",
+          "/^render.+$/"
+        ],
+        "handlers": [
+          "/^handle.+$/"
+        ]
+      }
+    }]
+  }
+}
