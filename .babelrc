@@ -1,0 +1,8 @@
+{
+  "presets": ["flow", "react", "stage-1", "es2015"],
+  "plugins": [
+    "transform-es2015-modules-commonjs",
+    "transform-react-display-name",
+    "transform-class-properties"
+  ]
+}

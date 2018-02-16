@@ -1,0 +1,4 @@
+--require test/helpers/boot.js
+--require test/helpers/env.js
+--require test/helpers/jsdom.js
+test/**/*.test.js
