@@ -1,6 +1,6 @@
 {
   "name": "spunky",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lifecycle management for react-redux",
   "main": "lib/index.js",
   "repository": "https://github.com/neoverse/spunky",
