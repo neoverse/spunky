@@ -74,6 +74,15 @@ export default function configureStore(initialState = {}) {
 }
 ```
 
+In order to use promises (or `async`/`await` syntax) in your actions, you can apply the `redux-saga`
+middleware in conjunction with [`redux-thunk`](https://github.com/gaearon/redux-thunk).  e.g.:
+
+```js
+import thunk from "redux-thunk";
+
+const store = createStore(reducers, initialState, applyMiddleware(sagaMiddleware, thunk));
+```
+
 ## Usage
 
 Usage of `spunky` can be broken down into three parts:
