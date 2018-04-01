@@ -21,5 +21,6 @@ export { default as withCancel } from './hocs/withCancel';
 
 export { default as initiallyLoadedStrategy } from './hocs/progressStrategies/initiallyLoadedStrategy';
 export { default as alreadyLoadedStrategy } from './hocs/progressStrategies/alreadyLoadedStrategy';
+export { default as recentlyCompletedStrategy } from './hocs/progressStrategies/recentlyCompletedStrategy';
 
 export type { Actions, Progress } from './values/types';

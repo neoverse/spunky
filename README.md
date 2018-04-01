@@ -330,8 +330,8 @@ export default withProgress(profileActions)(MyComponent);
 The `initiallyLoadedStrategy` is the default strategy.  It:
 
 * returns `FAILED` if any actions have failed,
-* returns `LOADING` if any actions are loading or haven't started loading,
 * returns `LOADED` if all actions have loaded.
+* returns `LOADING` if any actions are loading or haven't started loading,
 
 ```js
 import { initiallyLoadedStrategy } from "spunky";
@@ -342,13 +342,21 @@ import { initiallyLoadedStrategy } from "spunky";
 The `alreadyLoadedStrategy`:
 
 * returns `FAILED` if any actions have failed,
-* returns `LOADING` if any actions hasn't finished loading *for the first time*.
 * returns `LOADED` if all actions have loaded *at least once*, even if it has been called (is
   loading) again,
+* returns `LOADING` if any actions hasn't finished loading *for the first time*.
 
 ```js
 import { alreadyLoadedStrategy } from "spunky";
 ```
+
+##### Recently Completed Strategy
+
+The `recentlyCompletedStrategy`:
+
+* returns `FAILED` if any actions are failed or are loading but failed before the most recent load,
+* returns `LOADED` if all actions are loaded or are loading but loaded before the most recent load,
+* returns `LOADING` if any actions are loading and have not previously loaded or failed.
 
 #### Custom Strategy
 
