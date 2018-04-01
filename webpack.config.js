@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 module.exports = (env) => {
   const isProduction = env && env.prod;
   const config = {
-    entry: ['babel-polyfill', './src/index.js'],
+    entry: ['./src/index.js'],
     target: 'web',
     mode: isProduction ? 'production' : 'development',
     output: {
