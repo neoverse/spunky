@@ -32,9 +32,9 @@ function reduceAction(state: State = initialState, actionState: ActionState): Ob
     case ACTION_CALL:
       return { ...state, progress: LOADING, rollbackProgress: state.progress };
     case ACTION_SUCCESS:
-      return { ...state, progress: LOADED, rollbackProgress: LOADED, error: null, data: actionState.payload, loadedCount: state.loadedCount + 1 };
+      return { ...state, progress: LOADED, rollbackProgress: LOADED, data: actionState.payload, loadedCount: state.loadedCount + 1 };
     case ACTION_FAILURE:
-      return { ...state, progress: FAILED, rollbackProgress: FAILED, data: null, error: actionState.payload };
+      return { ...state, progress: FAILED, rollbackProgress: FAILED, error: actionState.payload };
     case ACTION_RESET:
       return { ...state, ...initialState };
     case ACTION_CANCEL:
