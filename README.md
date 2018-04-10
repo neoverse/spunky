@@ -205,14 +205,20 @@ export default createActions("geocode", ({ latitude, longitude }) => async () =>
 #### createBatchActions
 
 The `createBatchActions` function is useful when you want to call multiple functions in parallel, or
-if you want to display a loading component until all actions are finished loading.  This function
-accepts an object as its only argument, where each key represents an identifier for data, errors,
-etc., and each value is a set of actions created via `createActions` or `createBatchActions`.
+if you want to display a loading component until all actions are finished loading.  It accepts as
+arguments:
+
+1. `id`: Unique string representing the key in the redux store.  If multiple actions have the same
+   `id`, then performing one action will overwrite the results of the other.  Including periods
+   (`.`) will result in a nested object structure within the redux store (e.g.: `foo.bar` will
+   create an object with key `foo` that has a nested object under key `bar`).
+1. `actionsMap`: an object where each key represents an identifier for data, errors, etc., and each
+   value is a set of actions created via `createActions` or `createBatchActions`.
 
 ```js
 import { createBatchActions } from "spunky";
 
-export default createBatchActions({
+export default createBatchActions("account", {
   profile: profileActions,
   friends: friendsActions
 });
