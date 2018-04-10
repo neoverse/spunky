@@ -25,7 +25,8 @@ describe('createBatchActions', () => {
       RESET: 'BATCH/RESET',
       CANCEL: 'BATCH/CANCEL',
       SUCCESS: 'BATCH/SUCCESS',
-      FAILURE: 'BATCH/FAILURE'
+      FAILURE: 'BATCH/FAILURE',
+      CLEAN: 'BATCH/CLEAN'
     });
   });
 
@@ -56,6 +57,15 @@ describe('createBatchActions', () => {
       type: 'BATCH/CANCEL',
       meta: { id: BATCH_ID, type: 'BATCH/CANCEL' },
       payload: { calls: { one: actions1.cancel(), two: actions2.cancel() } }
+    });
+  });
+
+  it('defines a clean function', () => {
+    expect(actions.clean()).to.deep.equal({
+      batch: true,
+      type: 'BATCH/CLEAN',
+      meta: { id: BATCH_ID, type: 'BATCH/CLEAN' },
+      payload: { calls: { one: actions1.clean(), two: actions2.clean() } }
     });
   });
 });

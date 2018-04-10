@@ -4,7 +4,13 @@ import { put, take, race, all, call } from 'redux-saga/effects';
 import { type Saga } from 'redux-saga';
 
 import { actionMatcher } from '../util/matchers';
-import { BATCH_SUCCESS, BATCH_FAILURE, BATCH_RESET, BATCH_CANCEL } from '../values/api';
+import {
+  BATCH_SUCCESS,
+  BATCH_FAILURE,
+  BATCH_RESET,
+  BATCH_CANCEL,
+  BATCH_CLEAN
+} from '../values/api';
 import {
   type Error,
   type ActionMeta,
@@ -65,7 +71,8 @@ export default function* batchSaga(state: Object, actionState: ActionState): Sag
   yield race({
     call: call(sagaActions.request, state, payload.calls, sagaActions),
     cancel: take(actionMatcher(BATCH_CANCEL, id)),
-    reset: take(actionMatcher(BATCH_RESET, id))
+    reset: take(actionMatcher(BATCH_RESET, id)),
+    clean: take(actionMatcher(BATCH_CLEAN, id))
   });
 
   return true;

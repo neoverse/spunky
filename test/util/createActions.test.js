@@ -16,7 +16,8 @@ describe('createActions', () => {
       RESET: 'TEST/ACTION/RESET',
       CANCEL: 'TEST/ACTION/CANCEL',
       SUCCESS: 'TEST/ACTION/SUCCESS',
-      FAILURE: 'TEST/ACTION/FAILURE'
+      FAILURE: 'TEST/ACTION/FAILURE',
+      CLEAN: 'TEST/ACTION/CLEAN'
     });
   });
 
@@ -45,6 +46,14 @@ describe('createActions', () => {
       batch: false,
       type: 'TEST/ACTION/CANCEL',
       meta: { id: ID, type: 'ACTION/CANCEL' }
+    });
+  });
+
+  it('defines a clean function', () => {
+    expect(actions.clean()).to.deep.equal({
+      batch: false,
+      type: 'TEST/ACTION/CLEAN',
+      meta: { id: ID, type: 'ACTION/CLEAN' }
     });
   });
 });

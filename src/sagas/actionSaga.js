@@ -3,7 +3,13 @@ import { call, put, race, take } from 'redux-saga/effects';
 import { delay, type Saga } from 'redux-saga';
 
 import { actionMatcher } from '../util/matchers';
-import { ACTION_SUCCESS, ACTION_FAILURE, ACTION_RESET, ACTION_CANCEL } from '../values/api';
+import {
+  ACTION_SUCCESS,
+  ACTION_FAILURE,
+  ACTION_RESET,
+  ACTION_CANCEL,
+  ACTION_CLEAN
+} from '../values/api';
 import {
   type Error,
   type Payload,
@@ -57,7 +63,8 @@ export default function* actionSaga(state: Object, actionState: ActionState): Sa
   yield race({
     call: call(sagaActions.request, state, actionState.payload, sagaActions),
     cancel: take(actionMatcher(ACTION_CANCEL, id)),
-    reset: take(actionMatcher(ACTION_RESET, id))
+    reset: take(actionMatcher(ACTION_RESET, id)),
+    clean: take(actionMatcher(ACTION_CLEAN, id))
   });
 
   return true;
