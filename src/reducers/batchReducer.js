@@ -1,7 +1,7 @@
 // @flow
-import { get, set, mapValues } from 'lodash';
+import { get, set, unset, mapValues } from 'lodash';
 
-import { BATCH_CALL } from '../values/api';
+import { BATCH_CALL, BATCH_CLEAN } from '../values/api';
 import { type ActionState } from '../values/types';
 
 type State = {
@@ -36,7 +36,9 @@ function reduceBatch(state: State = initialState, actionState: ActionState): Obj
 export default function batchReducer(state: Object = {}, actionState: ActionState): Object {
   const { id, type } = actionState.meta;
 
-  if (type) {
+  if (type === BATCH_CLEAN) {
+    return unset({ ...state }, id);
+  } else if (type) {
     return set({ ...state }, id, reduceBatch(get(state, id), actionState));
   } else {
     return state;

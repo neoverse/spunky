@@ -500,8 +500,8 @@ export default withReset(profileActions, (prevProps, nextProps) => {
 
 #### withActions
 
-The `withActions` HOC is used for passing the `call`, `cancel`, and/or `reset` function definitions
-for an action to your component.
+The `withActions` HOC is used for passing the `call`, `cancel`, `reset`, and/or `clean` function
+definitions for an action to your component.
 
 | Argument            | Type       | Required | Description
 | ------------------- | ---------- | -------- | -----------
@@ -516,7 +516,8 @@ export default withActions(profileActions)(MyComponent);
 export default withActions(profileActions, (actions, ownProps) => ({
   request: actions.call,
   abort: actions.cancel,
-  clean: actions.reset
+  reset: actions.reset,
+  clean: actions.clean
 }))(MyComponent);
 ```
 

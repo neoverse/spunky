@@ -9,7 +9,8 @@ import { type Actions } from '../values/types';
 const defaultMapActionsToProps = (actions: Actions, _props: Object): Object => ({
   call: actions.call,
   cancel: actions.cancel,
-  reset: actions.reset
+  reset: actions.reset,
+  clean: actions.clean
 });
 
 const createMapDispatchToProps = (actions: Actions, mapActionsToProps: Function): Object => {

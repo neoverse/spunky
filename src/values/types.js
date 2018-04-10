@@ -2,8 +2,8 @@
 export type Progress = 'INITIAL' | 'LOADING' | 'LOADED' | 'FAILED';
 
 export type ActionType =
-  'ACTION/CALL' | 'ACTION/CANCEL' | 'ACTION/SUCCESS' | 'ACTION/FAILURE' | 'ACTION/RESET' |
-  'BATCH/CALL' | 'BATCH/CANCEL' | 'BATCH/SUCCESS' | 'BATCH/FAILURE' | 'BATCH/RESET';
+  'ACTION/CALL' | 'ACTION/CANCEL' | 'ACTION/SUCCESS' | 'ACTION/FAILURE' | 'ACTION/RESET' | 'ACTION/CLEAN' |
+  'BATCH/CALL' | 'BATCH/CANCEL' | 'BATCH/SUCCESS' | 'BATCH/FAILURE' | 'BATCH/RESET' | 'BATCH/CLEAN';
 
 export type Data = ?Object;
 export type Error = ?string;
@@ -14,10 +14,11 @@ export type ActionTypeMap = {
   CANCEL: string,
   SUCCESS: string,
   FAILURE: string,
-  RESET: string
+  RESET: string,
+  CLEAN: string
 };
 
-export type ActionName = 'call' | 'cancel' | 'reset';
+export type ActionName = 'call' | 'cancel' | 'reset' | 'clean';
 
 export type Actions = {
   id: string,

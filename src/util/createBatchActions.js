@@ -6,7 +6,8 @@ import {
   BATCH_CANCEL,
   BATCH_SUCCESS,
   BATCH_FAILURE,
-  BATCH_RESET
+  BATCH_RESET,
+  BATCH_CLEAN
 } from '../values/api';
 
 import {
@@ -22,7 +23,8 @@ const actionTypes: ActionTypeMap = {
   CANCEL: BATCH_CANCEL,
   SUCCESS: BATCH_SUCCESS,
   FAILURE: BATCH_FAILURE,
-  RESET: BATCH_RESET
+  RESET: BATCH_RESET,
+  CLEAN: BATCH_CLEAN
 };
 
 function mapActions(
@@ -55,5 +57,12 @@ export default function createBatchActions(id: string, actionsMap: Object): Acti
     payload: { calls: mapActions(actionsMap, 'reset') }
   });
 
-  return { id, call, cancel, reset, actionTypes };
+  const clean = (): ActionState => ({
+    batch: true,
+    type: actionTypes.CLEAN,
+    meta: { type: BATCH_CLEAN, id },
+    payload: { calls: mapActions(actionsMap, 'clean') }
+  });
+
+  return { id, call, cancel, reset, clean, actionTypes };
 }
