@@ -1,3 +1,6 @@
+# 1.2.0
+- Added support for nested store keys.
+
 # 1.1.2
 - Added `recentlyCompletedStrategy`.
 
