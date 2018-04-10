@@ -1,5 +1,6 @@
 # 1.2.0
 - Added support for nested store keys.
+- Added `clean` action to completely remove redux state data.
 
 # 1.1.2
 - Added `recentlyCompletedStrategy`.
