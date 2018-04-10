@@ -1,4 +1,6 @@
 // @flow
+import { get, set } from 'lodash';
+
 import {
   ACTION_CALL,
   ACTION_SUCCESS,
@@ -48,10 +50,7 @@ export default function actionReducer(state: Object = {}, actionState: ActionSta
   const { id, type } = actionState.meta;
 
   if (type) {
-    return {
-      ...state,
-      [id]: reduceAction(state[id], actionState)
-    };
+    return set({ ...state }, id, reduceAction(get(state, id), actionState));
   } else {
     return state;
   }

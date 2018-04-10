@@ -168,7 +168,9 @@ Actions can be called, reset, and cancelled.
 To create a set of actions, use the `createActions` function.  It accepts as arguments:
 
 1. `id`: Unique string representing the key in the redux store.  If multiple actions have the same
-   `id`, then performing one action will overwrite the results of the other.
+   `id`, then performing one action will overwrite the results of the other.  Including periods
+   (`.`) will result in a nested object structure within the redux store (e.g.: `foo.bar` will
+   create an object with key `foo` nesting an object with key `bar`).
 1. `action`: Function to be called when dispatching the action.
 
 Calling `createActions` will generate a simple object with the following shape:
