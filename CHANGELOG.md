@@ -1,3 +1,6 @@
+# 1.2.1
+- Fixed `clean` action not being handled by reducer.
+
 # 1.2.0
 - Added support for nested store keys.
 - Added `clean` action to completely remove redux state data.
