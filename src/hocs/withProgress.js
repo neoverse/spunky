@@ -1,11 +1,10 @@
 // @flow
 import { type ComponentType } from 'react';
-import { get, map, castArray } from 'lodash';
+import { get, map, uniq, reduce, compact } from 'lodash';
 import { connect, type MapStateToProps } from 'react-redux';
 import { compose, setDisplayName, wrapDisplayName } from 'recompose';
 
 import initiallyLoadedStrategy from './progressStrategies/initiallyLoadedStrategy';
-import { INITIAL } from '../values/progress';
 import { type Actions, type ActionState, type Progress } from '../values/types';
 
 type Options = {
@@ -14,25 +13,29 @@ type Options = {
   propName?: string
 };
 
+const getActionIds = (actions: Actions): Array<string> => {
+  if (!actions.batch) {
+    return [actions.id];
+  }
+
+  return uniq(reduce(actions.actions, (ids, childActions) => {
+    ids.push(getActionIds(childActions));
+    return ids;
+  }, []));
+};
+
 export default function withProgress(
   actions: Actions,
   { strategy = initiallyLoadedStrategy, prefix = 'spunky', propName = 'progress' }: Options = {}
 ): (Component: ComponentType<any>) => ComponentType<any> {
+  const actionIds = getActionIds(actions);
+
   const mapProgressToProps = (actionStates: Array<ActionState>) => ({
     [propName]: strategy(actionStates)
   });
 
-  // TODO: this doesn't account for batch within a batch, need to make this recursive
   const getActionStates = (state: Object): Array<ActionState> => {
-    const actionState = get(state, `${prefix}.${actions.id}`);
-
-    if (!actionState) {
-      return [];
-    } else if (actionState.batch) {
-      return map(actionState.mapping, (key) => get(state, `${prefix}.${key}`, INITIAL));
-    } else {
-      return castArray(actionState);
-    }
+    return compact(map(actionIds, (id) => get(state, `${prefix}.${id}`)));
   };
 
   const mapStateToProps: MapStateToProps<*, *, *> = (state: Object): Object => {

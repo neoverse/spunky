@@ -64,5 +64,5 @@ export default function createBatchActions(id: string, actionsMap: Object): Acti
     payload: { calls: mapActions(actionsMap, 'clean') }
   });
 
-  return { id, call, cancel, reset, clean, actionTypes };
+  return { id, call, cancel, reset, clean, actionTypes, batch: true, actions: actionsMap };
 }
