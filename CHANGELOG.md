@@ -1,3 +1,8 @@
+# 1.3.0
+- Fixed `withProgress` HOC for batch actions that have not had `withCall` performed on them
+  previously.  This fixes a scenario where `withCall` is performed on two or more individual
+  actions followed by `withProgress` on a batch action comprised of the previous actions.
+
 # 1.2.1
 - Fixed `clean` action not being handled by reducer.
 
