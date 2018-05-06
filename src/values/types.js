@@ -22,7 +22,11 @@ export type ActionName = 'call' | 'cancel' | 'reset' | 'clean';
 
 export type Actions = {
   id: string,
+  batch: boolean,
   actionTypes: ActionTypeMap,
+  actions?: {
+    [name: string]: Actions
+  },
   [name: ActionName]: Function
 };
 

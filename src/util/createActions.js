@@ -46,5 +46,5 @@ export default function createActions(id: string, createAdaptor: Function): Acti
     meta: { type: ACTION_CLEAN, id }
   });
 
-  return { id, call, cancel, reset, clean, actionTypes };
+  return { id, call, cancel, reset, clean, actionTypes, batch: false };
 }
