@@ -1,10 +1,11 @@
 // @flow
 import { type ComponentType } from 'react';
-import { get, map, uniq, reduce, compact } from 'lodash';
+import { get, map, flatten, uniq, reduce } from 'lodash';
 import { connect, type MapStateToProps } from 'react-redux';
 import { compose, setDisplayName, wrapDisplayName } from 'recompose';
 
 import initiallyLoadedStrategy from './progressStrategies/initiallyLoadedStrategy';
+import { initialState } from '../reducers/actionReducer';
 import { type Actions, type ActionState, type Progress } from '../values/types';
 
 type Options = {
@@ -18,10 +19,10 @@ const getActionIds = (actions: Actions): Array<string> => {
     return [actions.id];
   }
 
-  return uniq(reduce(actions.actions, (ids, childActions) => {
+  return uniq(flatten(reduce(actions.actions, (ids, childActions) => {
     ids.push(getActionIds(childActions));
     return ids;
-  }, []));
+  }, [])));
 };
 
 export default function withProgress(
@@ -35,7 +36,7 @@ export default function withProgress(
   });
 
   const getActionStates = (state: Object): Array<ActionState> => {
-    return compact(map(actionIds, (id) => get(state, `${prefix}.${id}`)));
+    return map(actionIds, (id) => get(state, `${prefix}.${id}`, initialState));
   };
 
   const mapStateToProps: MapStateToProps<*, *, *> = (state: Object): Object => {

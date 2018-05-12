@@ -21,7 +21,7 @@ type State = {
   error: Error
 };
 
-const initialState: State = {
+export const initialState: State = {
   batch: false,
   progress: INITIAL,
   rollbackProgress: null,
