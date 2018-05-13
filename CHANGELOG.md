@@ -1,3 +1,7 @@
+# 1.3.1
+- Fixed `withProgress` HOC for batch actions where any associated actions have not had `withCall`
+  performed on them previously.
+
 # 1.3.0
 - Fixed `withProgress` HOC for batch actions that have not had `withCall` performed on them
   previously.  This fixes a scenario where `withCall` is performed on two or more individual
