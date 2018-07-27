@@ -442,7 +442,7 @@ The `withCancel` HOC is used for cancelling (interrupting) a call when one (or m
 | Argument           | Type                           | Required | Description
 | ------------------ | ------------------------------ | -------- | -----------
 | `actions`          | `Actions`                      | Yes      | The actions defined by `createAction` or `createBatchActions`.
-| `shouldReload`     | `string | string[] | function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
+| `shouldReload`     | `string / string[] / function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
 | `options`          | `object`                       | No       | An object containing additional options outlined below.
 | `options.propName` | `string`                       | No       | The dispatch function prop's name. (default: `"performAction"`)
 
@@ -463,7 +463,7 @@ The `withRecall` HOC is used for retrying a call when one (or more) prop changes
 | Argument           | Type                           | Required | Description
 | ------------------ | ------------------------------ | -------- | -----------
 | `actions`          | `Actions`                      | Yes      | The actions defined by `createAction` or `createBatchActions`.
-| `shouldReload`     | `string | string[] | function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
+| `shouldReload`     | `string / string[] / function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
 | `options`          | `object`                       | No       | An object containing additional options outlined below.
 | `options.propName` | `string`                       | No       | The dispatch function prop's name. (default: `"performAction"`)
 
@@ -484,7 +484,7 @@ The `withReset` HOC is used for reseting (clearing) the redux store for an actio
 | Argument           | Type                           | Required | Description
 | ------------------ | ------------------------------ | -------- | -----------
 | `actions`          | `Actions`                      | Yes      | The actions defined by `createAction` or `createBatchActions`.
-| `shouldReload`     | `string | string[] | function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
+| `shouldReload`     | `string / string[] / function` | Yes      | The prop name(s) to watch for changes, or a function that takes `prevProps` and `nextProps` and returns a boolean.
 | `options`          | `object`                       | No       | An object containing additional options outlined below.
 | `options.propName` | `string`                       | No       | The dispatch function prop's name. (default: `"performAction"`)
 
