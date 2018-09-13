@@ -154,7 +154,7 @@ const MyContainer = compose(
 )(MyComponent);
 
 ReactDOM.render(
-  <MyComponent id={1} />,
+  <MyContainer id={1} />,
   document.getElementById("root")
 );
 ```
